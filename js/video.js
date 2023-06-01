@@ -1,6 +1,6 @@
 //const player = videojs('myVideo');
   // 视频来源路径
-  var srcs = [{src: 'http://209.141.43.183/vod/we/NO.01/1.mp4/index.m3u8',type: 'application/x-mpegURL',poster: 'http://vjs.zencdn.net/v/oceans.png'}];
+  var srcs = [{src: 'https://209.141.43.183/vod/we/NO.01/1.mp4/index.m3u8',type: 'application/x-mpegURL',poster: 'http://vjs.zencdn.net/v/oceans.png'}];
   var player = videojs(document.getElementById('myVideo'), {
     controls: true, // 是否显示控制条
     poster: 'http://vjs.zencdn.net/v/oceans.png', // 视频封面图地址
