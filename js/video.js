@@ -1,11 +1,10 @@
 //const player = videojs('myVideo');
-  // 视频来源路径
-  var srcs = [{src: 'https://209.141.43.183/vod/we/NO.01/1.mp4/index.m3u8',type: 'application/x-mpegURL'}];
+  var num = [209,207,141,145,43,183,174];
   var player = videojs(document.getElementById('myVideo'), {
     controls: true, // 是否显示控制条
     poster: 'https://209.141.43.183/image/images/fm.jpg', // 视频封面图地址
     preload: 'auto',
-    autoplay: false,
+    autoplay: true,
     fluid: true, // 自适应宽高
     language: 'zh-CN', // 设置语言
     muted: false, // 是否静音
@@ -46,15 +45,26 @@
           name: 'FullscreenToggle' // 全屏
         },
       ]
-    },
-    sources:srcs
+    }
   }, function (){
     console.log('视频可以播放了',this);
   });
 
+$(function (){
+  if(getCookie("vId") == "" || getCookie("vId") == undefined){
+    location.href = "https://xxs21.github.io/botpage/index.html";
+  }
+
+  $.post("https://209.141.43.183/v1/getByIdVideo",{
+    vId:getCookie("vId")
+  },function(res) {
+    player.src("https://209.141.43.183/vod/"+res.data.vpath+"/index.m3u8");
+  },"json")
+})
+
   // player.ITMAN_title({
   //   //file:"路徑/浮水印圖片",
-  //   text: 'sjk',
+  //   text: '搜狗',
   //   opacity: 0.6,
   //   url:"#"
   // });

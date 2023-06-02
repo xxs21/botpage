@@ -3,12 +3,75 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<link rel="icon" href="icon/pig.ico" type="image/x-icon">
+		<title>sg</title>
+		<style>
+			body{
+				font-family: "楷体";
+			}
+		</style>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 	</head>
+
 	<body>
 		<div id="index">
-			
+			<template>
+				<v-card
+						class="mx-auto"
+						max-width="500"
+				>
+
+
+					<v-toolbar
+							color="indigo"
+							dark
+					>
+						<v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+						<v-toolbar-title>sougou</v-toolbar-title>
+
+						<v-spacer></v-spacer>
+
+						<v-btn icon>
+							<v-icon>mdi-magnify</v-icon>
+						</v-btn>
+					</v-toolbar>
+
+					<v-container fluid>
+						<v-row dense>
+							<v-col
+									v-for="card in cards"
+									:key="card.title"
+									:cols="card.flex"
+							>
+								<a v-on:click="sc('vId',card.vid)" style="text-decoration: none">
+									<v-card>
+										<v-card-title style="color:#be0027; background-color: #52325d" v-text="card.title"></v-card-title>
+										<v-img
+												:src="card.src"
+												class="white--text"
+												gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+												height="200px"
+										>
+										</v-img>
+									</v-card>
+								</a>
+							</v-col>
+						</v-row>
+					</v-container>
+				</v-card>
+			</template>
 		</div>
 	</body>
-	<script src="js/vues/vue.js"></script>
-	<script src="js/vues/vuetify.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/jquery.cookie.min.js"></script>
+	<script src="js/xxsCookie.js"></script>
+	<script src="js/index.js"></script>
 </html>
