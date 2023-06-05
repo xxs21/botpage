@@ -7,6 +7,7 @@ var vm = new Vue({
         card:{}
     },
     created() {
+        $("#myVideo").hide();
         this.initVideo();
     },
     methods: {
@@ -21,7 +22,7 @@ var vm = new Vue({
             }
         },
         getVideo: async function(videoName) {
-            const res = await fetch('https://209.141.43.183/v1/getHVideo');
+            const res = await fetch('https://209.141.43.183/av/getHVideo');
             const json = await res.json();
             return json;
         },initVideo: function() {
@@ -41,7 +42,14 @@ var vm = new Vue({
         },
         sc:function(name,vid) {
             setCookie(name,vid,1);
-            location.href = "https://xxs21.github.io/botpage/video.html";
+            $("#index").hide();
+            $.post("https://209.141.43.183/av/getByIdVideo",{
+              vId:getCookie("vId")
+            },function(res) {
+                $("#myVideo").show();
+              player.src("https://209.141.43.183/vod/"+res.data.vpath+"/index.m3u8");
+              player.landscapeFullscreen();
+            },"json")
         }
     }
 })
